@@ -43,14 +43,14 @@ async def fetch_all_todos():
 
 
 async def fetch_one_todo(nanoid):
-    doc = await collection.find_one({"nanoid": nanoid}, {"_id": 0})
+    doc = collection.find_one({"nanoid": nanoid}, {"_id": 0})
     return doc
 
 
 async def create_todo(todo):
     doc = todo.dict()
-    await collection.insert_one(doc)
-    result = await fetch_one_todo(todo.nanoid)
+    collection.insert_one(doc)
+    result = fetch_one_todo(todo.nanoid)
     return result
 
 

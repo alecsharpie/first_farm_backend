@@ -1,5 +1,5 @@
-fastapi == 0.65.1
-uvicorn == 0.14.0
-motor == 2.4.0
+fastapi == 0.73.0
+uvicorn == 0.17.1
+motor == 2.5.1
 gunicorn == 20.1.0
 pymongo[srv] == 3.12.0
