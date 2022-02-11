@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 origins = [
-    "*"
+    "http://localhost:3000"
 ]  # This will eventually be changed to only the origins you will use once it's deployed, to secure the app a bit more.
 
 app = FastAPI()
@@ -10,7 +10,7 @@ app = FastAPI()
 import pymongo
 
 from model import *
-import motor.motor_asyncio
+#import motor.motor_asyncio
 from dotenv import dotenv_values
 import os
 

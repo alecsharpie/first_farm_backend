@@ -1,6 +1,9 @@
 fastapi == 0.73.0
 uvicorn == 0.17.1
-motor == 2.5.1
-gunicorn == 20.1.0
-pymongo[srv] == 3.12.0
+#motor == 2.5.1
+#gunicorn == 20.1.0
+pymongo[srv] == 4.0.1
 pydantic
+
+python-dotenv == 0.19.2
+uvicorn
