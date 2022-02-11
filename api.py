@@ -39,19 +39,19 @@ async def fetch_all_todos():
     cursor = collection.find()
     async for doc in cursor:
         todos.append(Todo(**doc))
-    return todos
+    return await todos
 
 
 async def fetch_one_todo(nanoid):
     doc = collection.find_one({"nanoid": nanoid}, {"_id": 0})
-    return doc
+    return await doc
 
 
 async def create_todo(todo):
     doc = todo.dict()
     collection.insert_one(doc)
     result = fetch_one_todo(todo.nanoid)
-    return result
+    return await result
 
 
 async def change_todo(nanoid, title, desc, checked):
@@ -106,7 +106,8 @@ async def add_todo(todo: Todo):
 
 @app.put("/api/update-todo/{nanoid}", response_model=Todo)
 async def update_todo(todo: Todo):
-    result = await change_todo(nanoid, title, desc, checked)
+    result = await change_todo(todo.nanoid, todo.title, todo.desc,
+                               todo.checked)
     if not result: raise HTTPException(400)
     return result
 
