@@ -34,12 +34,12 @@ database = client.TodoDatabase
 collection = database.todos
 
 
-async def fetch_all_todos():
+def fetch_all_todos():
     todos = []
     cursor = collection.find()
-    async for doc in cursor:
+    for doc in cursor:
         todos.append(Todo(**doc))
-    return await todos
+    return todos
 
 
 async def fetch_one_todo(nanoid):
@@ -91,8 +91,8 @@ async def get_one_todo(nanoid):
 
 
 @app.get("/api/get-todo")
-async def get_todos():
-    todos = await fetch_all_todos()
+def get_todos():
+    todos = fetch_all_todos()
     if not todos: raise HTTPException(404)
     return todos
 
